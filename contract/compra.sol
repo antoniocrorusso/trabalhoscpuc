@@ -37,34 +37,34 @@ contract Compra {
     event CompraConfirmada();
     event ObjetoEntregue();
 
-    function desistir()public apenasComprador noEstado(Estado.Confirmado) {
+    function desistir()public apenasComprador noEstado(Estado.Confirmado) returns(bool) {
         emit Desistencia();
         estado = Estado.Inativo;
         comprador.transfer(address(this).balance);
+        return true;
     }
 
-    function confirmarCompra() public noEstado(Estado.Compra) payable apenasComprador {
+    function confirmarCompra() public noEstado(Estado.Compra) payable apenasComprador returns(bool) {
         require(msg.value == valor, "Valor incorreto.");
         emit CompraConfirmada();
         estado = Estado.Confirmado;
-        
+        return true;
     }
 
-    function confirmarEntrega() public apenasComprador noEstado(Estado.Confirmado) {
+    function confirmarEntrega() public apenasComprador noEstado(Estado.Confirmado) returns(bool) {
         emit ObjetoEntregue();
         estado = Estado.Entregue;
+        return true;
     }
     
-    function receber() public apenasVendedor noEstado(Estado.Entregue) {
+    function receber() public apenasVendedor noEstado(Estado.Entregue) returns(bool) {
+        require(address(this).balance > 0, "Não há valores nesse Contrato.");
         vendedor.transfer(address(this).balance);
         estado = Estado.Inativo;
+        return true;
     }
     
     function valorNoContrato() public view returns(uint256) {
         return address(this).balance;
-    }
-    
-    function encerrarContrato() public noEstado(Estado.Inativo) apenasVendedor {
-         selfdestruct(vendedor);
     }
 }
