@@ -169,4 +169,4 @@ var contractAbi = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-]
+];
