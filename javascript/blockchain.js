@@ -129,7 +129,7 @@ function receber() {
 function valorContrato() {
     var status;
     var campoValor = document.getElementById("campoValor");     
-    contrato.valor()
+    contract.valor()
     .then( (result) => {
         campoValor.innerHTML = result;
     })
@@ -142,7 +142,7 @@ function valorContrato() {
 function estadoDoContrato() {
     var status;
     var campoStatus = document.getElementById("campoStatus");     
-    contrato.estadoDoContrato(String)
+    contract.estadoDoContrato()
     .then( (result) => {
         campoStatus.innerHTML = result;
     })
