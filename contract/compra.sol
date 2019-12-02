@@ -44,7 +44,7 @@ contract Compra {
         return true;
     }
 
-    function confirmarCompra() public noEstado(Estado.Compra) payable apenasComprador returns(bool) {
+    function confirmarCompra() public payable apenasComprador noEstado(Estado.Compra) returns(bool) {
         require(msg.value == valor, "Valor incorreto.");
         emit CompraConfirmada();
         estado = Estado.Confirmado;
