@@ -34,12 +34,12 @@ function confirmarCompra() {
         boxCommStatus.innerHTML = "Transação enviada, esperando pelo resultado...";
         tx.wait()
         .then( (resultFromContract) => {
-            console.log("pagamento - o resultado foi: ", resultFromContract);
-            getContractBalance();
+            console.log("pagamento feito- o pagamento foi: ", resultFromContract);
+            valorNoContrato();
             boxCommStatus.innerHTML = "Transação executada.";
         })        
         .catch( (err) => {
-            console.error("executePayment - after tx being mint");
+            console.error("confirmarCompra - after tx being mint");
             console.error(err);
             boxCommStatus.innerHTML = "Algo saiu errado: " + err.message;
         })
