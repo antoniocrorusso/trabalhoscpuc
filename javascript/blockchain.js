@@ -15,7 +15,7 @@ function valorNoContrato() {
         console.error(err);
         alert("Uma tela irá aparecer pedindo para conectar com sua conta ethereum.\nPara proceder, dê essa permissão.\nCaso não tenha uma conta ethereum, crie uma usando o Metamask.");
         ethereum.enable();
-        alert("Depois de vc dar a permissão, iremas recarregar a página.");
+        alert("Depois de dar a permissão, iremos recarregar a página.");
         document.location = "index.html";
     });
 }
