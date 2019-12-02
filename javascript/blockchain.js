@@ -142,7 +142,7 @@ function valorContrato() {
 function estadoDoContrato() {
     var status;
     var campoStatus = document.getElementById("campoStatus");     
-    contrato.estadoDoContrato()
+    contrato.estadoDoContrato(String)
     .then( (result) => {
         campoStatus.innerHTML = result;
     })
