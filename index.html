@@ -13,7 +13,7 @@
       <div class="contractInfo">
        <h2>Status do Contrato</h2>
         <div>O contrato é: 0xEdd56a750E72B4547221eA01A243eb649Fc0b737 </div>
-        <div>O Estado do Contrato é: <span id="campoStatus">&nbsp;</span> - <button onclick="estadoContrato()"></button>Atualizar o Estado.</button></div>
+        <div>O Estado do Contrato é: <span id="campoStatus">&nbsp;</span> - <button onclick="estadoContrato()">Atualizar o Estado.</button></div>
         <div>O valor do Contrato é: <span id="campoValor">&nbsp;</span></div>
         <div>O valor atual no Smart Contract é: <span id="boxBalance">0</span> - <button onclick="valorNoContrato()">Atualizar o valor.</button></div>
       </div>
@@ -155,6 +155,8 @@
     <script src="javascript/blockchain.js"></script>
     <script>
       valorNoContrato();
+      estadoContrato()
+      valorContrato()
     </script>
   </body>
 </html>
