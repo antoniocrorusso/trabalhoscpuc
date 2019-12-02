@@ -1,128 +1,134 @@
 <!DOCTYPE html>
-<head>
-  <title>DApp Compra</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-<body>
+<html>
+  <head>
+    <title>DApp Compra</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
 
-<div class="header">
-    <h1>Contrato de Compra em Blockchain</h1>
-    </br>
-    <div class="contractInfo">
-        <h2>Status do Contrato</h2>
-        <div>O contrato é: 0xEdd56a750E72B4547221eA01A243eb649Fc0b737 </div>
-        <div>O Estado do Contrato é: <span id="campoStatus">&nbsp;</span> - <button onclick=>Atualizar o Estado.</button></div>
-        <div>O valor do Contrato é: <span id="campoValor">&nbsp;</span></div>
-        <div>O valor atual no Smart Contract é: <span id="boxBalance">0</span> - <button onclick="valorNoContrato()">Atualizar o valor.</button></div>
-    </div>
-</div>
-
-<div class="navbar">
-  <button onclick="hideShowBuy()">Opções do Comprador</button>
-  <button onclick="hideShowSel()">Opções do Vendedor</button>
-  <button onclick="hideShowRef()" class="right">Reembolso e Devolução</button>
-</div>
-
-<div class="row">
-    <div id="buyerOpt">
-        <h2>Opções do Comprador</h2>
-        <h5>Clique em cada botão para realizar a operação desejada</h5>
-        <div>
-          <h5>Confirmar a Compra.</h5>
-          <form name="frmPayment" id="frmPayment" action="#" method="get" onsubmit="executePayment(); return false;">
-              <div>
-                <label for="amount">Valor à pagar: </label>
-                  <input type="number" name="amount" id="amount"> em Wei
-              </div>
-              <div>
-                  &nbsp;
-              </div>
-              <div>
-                  <button type="submit">Confirmar Pagamento</button>
-              </div>
-              <div>
-                  &nbsp;
-              </div>
-          </form>
-
-        </div>
-        
-        <br>
-        <p>Confirmar o Recebimento</p>
-        <br>
-        <p>Desistir da Compra</p>
-    </div>
-
-    <div id="sellerOpt">
-        <h2>Opções do Vendedor</h2>
-        <h5>Clique em cada botão para realizar a operação desejada</h5>
-        <p>Receber os valores</p>
-    </div>
-
-    <div id="refund">
-        <h2>Para trocas, devolução com base no arrependimento ou contato:</h2>
-        <h5>Empresa XPTO</h5>
-        <h5>Av. avenida, n° 00, bairro X - São Paulo/SP</h5>
-        <h5>Fone: (11) 5555-5555</h5>
-        <h5>Email: xpto@email.com</h5>
+    <div class="header">
+        <h1>Contrato de Compra em Blockchain</h1>
         </br>
-        <p>*OBS: Não será possível o arrependimento após o período de 7 dias úteis.</p>
+        <div class="contractInfo">
+            <h2>Status do Contrato</h2>
+            <div>O contrato é: 0xEdd56a750E72B4547221eA01A243eb649Fc0b737 </div>
+            <div>O Estado do Contrato é: <span id="campoStatus">&nbsp;</span> - <button onclick=>Atualizar o Estado.</button></div>
+            <div>O valor do Contrato é: <span id="campoValor">&nbsp;</span></div>
+            <div>O valor atual no Smart Contract é: <span id="boxBalance">0</span> - <button onclick="valorNoContrato()">Atualizar o valor.</button></div>
+        </div>
     </div>
-</div>
 
-<div id="boxCommStatus">
-  Caixa de Diálogo da Blockchain
-</div>
+    <div class="navbar">
+      <button onclick="hideShowBuy()">Opções do Comprador</button>
+      <button onclick="hideShowSel()">Opções do Vendedor</button>
+      <button onclick="hideShowRef()" class="right">Reembolso e Devolução</button>
+    </div>
 
-<script>
-    function hideShowBuy() {
-      var x = document.getElementById("buyerOpt");
-      var y = document.getElementById("sellerOpt");
-      var z = document.getElementById("refund");
-      if (x.style.display === "block") {
-        x.style.display = "none";
-        y.style.display = "none";
-        z.style.display = "none";
-      } else {
-        x.style.display = "block";
-        y.style.display = "none";
-        z.style.display = "none";
-      }
-    }
+    <div class="row">
+        <div id="buyerOpt">
+            <h2>Opções do Comprador</h2>
+            <h5>Clique em cada botão para realizar a operação desejada</h5>
+            <div>
+              <h5>Confirmar a Compra.</h5>
+              <form name="frmPayment" id="frmPayment" action="#" method="get" onsubmit="executePayment(); return false;">
+                  <div>
+                    <label for="amount">Valor à pagar: </label>
+                      <input type="number" name="amount" id="amount"> em Wei
+                  </div>
+                  <div>
+                      &nbsp;
+                  </div>
+                  <div>
+                      <button type="submit">Confirmar Pagamento</button>
+                  </div>
+                  <div>
+                      &nbsp;
+                  </div>
+              </form>
 
-    function hideShowSel() {
-      var x = document.getElementById("sellerOpt");
-      var y = document.getElementById("buyerOpt");
-      var z = document.getElementById("refund");
-      if (x.style.display === "block") {
-        x.style.display = "none";
-        y.style.display = "none";
-        z.style.display = "none";
-      } else {
-        x.style.display = "block";
-        y.style.display = "none";
-        z.style.display = "none";
-      }
-    }
+            </div>
+            
+            <br>
+            <p>Confirmar o Recebimento</p>
+            <br>
+            <p>Desistir da Compra</p>
+        </div>
 
-    function hideShowRef() {
-      var x = document.getElementById("refund");
-      var y = document.getElementById("sellerOpt");
-      var z = document.getElementById("buyerOpt");
-      if (x.style.display === "block") {
-        x.style.display = "none";
-        y.style.display = "none";
-        z.style.display = "none";
-      } else {
-        x.style.display = "block";
-        y.style.display = "none";
-        z.style.display = "none";
-      }
-    }
-</script>
+        <div id="sellerOpt">
+            <h2>Opções do Vendedor</h2>
+            <h5>Clique em cada botão para realizar a operação desejada</h5>
+            <p>Receber os valores</p>
+        </div>
 
-</body>
+        <div id="refund">
+            <h2>Para trocas, devolução com base no arrependimento ou contato:</h2>
+            <h5>Empresa XPTO</h5>
+            <h5>Av. avenida, n° 00, bairro X - São Paulo/SP</h5>
+            <h5>Fone: (11) 5555-5555</h5>
+            <h5>Email: xpto@email.com</h5>
+            </br>
+            <p>*OBS: Não será possível o arrependimento após o período de 7 dias úteis.</p>
+        </div>
+    </div>
+
+    <div id="boxCommStatus">
+      Caixa de Diálogo da Blockchain
+    </div>
+
+    <script>
+        function hideShowBuy() {
+          var x = document.getElementById("buyerOpt");
+          var y = document.getElementById("sellerOpt");
+          var z = document.getElementById("refund");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+            y.style.display = "none";
+            z.style.display = "none";
+          } else {
+            x.style.display = "block";
+            y.style.display = "none";
+            z.style.display = "none";
+          }
+        }
+
+        function hideShowSel() {
+          var x = document.getElementById("sellerOpt");
+          var y = document.getElementById("buyerOpt");
+          var z = document.getElementById("refund");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+            y.style.display = "none";
+            z.style.display = "none";
+          } else {
+            x.style.display = "block";
+            y.style.display = "none";
+            z.style.display = "none";
+          }
+        }
+
+        function hideShowRef() {
+          var x = document.getElementById("refund");
+          var y = document.getElementById("sellerOpt");
+          var z = document.getElementById("buyerOpt");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+            y.style.display = "none";
+            z.style.display = "none";
+          } else {
+            x.style.display = "block";
+            y.style.display = "none";
+            z.style.display = "none";
+          }
+        }
+    </script>
+    <script charset="utf-8"
+      src="https://cdn.ethers.io/scripts/ethers-v4.min.js"
+      type="text/javascript">
+    </script>
+    <script src="javascript/abi.js"></script>
+    <script src="javascript/blockchain.js"></script>
+  </body>
 </html>
 
