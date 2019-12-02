@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+
+  button:focus {
+    outline:0;
+    }
+  
+  .header {
+    padding: 40px 20px 40px 40px;
+    text-align: justify;
+    background: #1abc9c;
+    color: white;
+    font-size: 15px;
+  }
+  
+  .header h1 {
+    font-size: 25px;
+    text-align: center;
+  }
+  
+  .header button {
+    background: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .header button:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .navbar {
+    overflow: hidden;
+    background-color: lightblue;
+  }
+  
+  
+  .navbar button {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 15px;
+    text-decoration: none;
+    background: lightgrey;
+    border: hidden;
+    cursor: pointer;
+  }
+  
+  .navbar button.right {
+    float: right;
+  }
+  
+  .navbar button:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .row {  
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0px 0px 0px 40px;
+  }
+
+  #buyerOpt, #sellerOpt, #refund {   
+    -ms-flex: 70%;
+    flex: 70%;
+    background-color: white;
+    display: none;
+    text-align: justify;
+    overflow: hidden;
+  }
+  
+  #divButton {
+    position: relative;
+    left: 20px;
+  }
+
+  #frmPayment, #frmDelivery, #frmGiveup, #frmReceive {
+    font-size: 15px;
+  }
+  
+  #frmPayment button, #frmDelivery button, #frmGiveup button, #frmReceive button {
+    background: #1abc9c;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: hidden;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  #frmPayment button:hover, #frmDelivery button:hover, #frmGiveup button:hover, #frmReceive button:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  #obs {
+    font-size: 15px;
+  }
+
+  #boxCommStatus, #boxContact{
+    padding: 20px;
+    text-align: center;
+    background: rgb(150, 201, 218);
+  }
+  
+  /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 700px) {
+    .row {   
+      flex-direction: column;
+    }
+  }
+  
+  /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+  @media screen and (max-width: 400px) {
+    .navbar a {
+      float: none;
+      width: 100%;
+    }
+  }
