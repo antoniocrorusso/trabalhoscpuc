@@ -1,4 +1,4 @@
-var contractAddress = "0xEdd56a750E72B4547221eA01A243eb649Fc0b737";
+var contractAddress = "0x2DD034a25a9926038966b1ec735175ba320B704B";
 ethereum.enable();
 var provider = new ethers.providers.Web3Provider(web3.currentProvider);
 var signer = provider.getSigner();
@@ -139,10 +139,10 @@ function valorContrato() {
     });
 }
 
-function estadoContrato() {
+function estadoDoContrato() {
     var status;
     var campoStatus = document.getElementById("campoStatus");     
-    contrato.estado()
+    contrato.estadoDoContrato()
     .then( (result) => {
         campoStatus.innerHTML = result;
     })
