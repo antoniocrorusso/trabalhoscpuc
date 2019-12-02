@@ -30,16 +30,16 @@ function confirmarCompra() {
     }; 
     contract.confirmarCompra(additionalSettings)
     .then( (tx) => {
-        console.log("Confirmar Compra - Transaçãp ", tx);   
+        console.log("Confirmar Compra - Transação ", tx);   
         boxCommStatus.innerHTML = "Transação enviada, esperando pelo resultado...";
         tx.wait()
         .then( (resultFromContract) => {
-            console.log("pagamento feito- o pagamento foi: ", resultFromContract);
+            console.log("Pagamento feito - o pagamento foi de: ", resultFromContract);
             valorNoContrato();
             boxCommStatus.innerHTML = "Transação executada.";
         })        
         .catch( (err) => {
-            console.error("confirmarCompra - after tx being mint");
+            console.error("Confirmar Compra - after tx being mint");
             console.error(err);
             boxCommStatus.innerHTML = "Algo saiu errado: " + err.message;
         })
@@ -47,6 +47,81 @@ function confirmarCompra() {
     .catch( (err) => {
         console.error("executePayment - tx has been sent");
         console.error(err);
-        boxCommStatus.innerHTML = "Something went wrong: " + err.message;
+        boxCommStatus.innerHTML = "Algo deu errado: " + err.message;
     })
+}
+
+function confirmarEntrega() {
+    var boxCommStatus = document.getElementById("boxCommStatus");
+    boxCommStatus.innerHTML = "Enviando a Confirmação..."
+    contract.confirmarEntrega()
+    .then( (dx) => {
+        console.log("Confirmar Entrega - transação", dx);
+        boxCommStatus.innerHTML = "Solicitação enviada, aguardando resultado...";
+        dx.wait()
+        .then( (resultFromContract) => {
+            console.log("Confirmar Entrega - Entrega Confirmada", resultFromContract);
+            boxCommStatus.innerHTML = "Entrega Confirmada";
+        })
+        .catch( (err) => {
+            console.error("Confirmar Entrega - after dx being mint");
+            console.error(err);
+            boxCommStatus.innerHTML = "Algo saiu errado: " + err.message;
+        })
+    })    
+    .catch( (err) => {
+        console.error("Confirmar Entrega - dx has been sent");
+        console.error(err);
+        boxCommStatus.innerHTML = "Algo deu errado: " + err.message;
+    })      
+}
+
+function desistir() {
+    var boxCommStatus = document.getElementById("boxCommStatus");
+    boxCommStatus.innerHTML = "Enviando a Solicitação..."
+    contract.desistir()
+    .then( (gx) => {
+        console.log("Desistência - transação", gx);
+        boxCommStatus.innerHTML = "Solicitação enviada, aguardando resultado...";
+        gx.wait()
+        .then( (resultFromContract) => {
+            console.log("Desistência - desistencia Confirmada", resultFromContract);
+            boxCommStatus.innerHTML = "Desistência Confirmada, reembolso efetuado.";
+        })
+        .catch( (err) => {
+            console.error("Desistência - after gx being mint");
+            console.error(err);
+            boxCommStatus.innerHTML = "Algo saiu errado: " + err.message;
+        })
+    })    
+    .catch( (err) => {
+        console.error("Desistência - gx has been sent");
+        console.error(err);
+        boxCommStatus.innerHTML = "Algo deu errado: " + err.message;
+    })      
+}
+
+function receber() {
+    var boxCommStatus = document.getElementById("boxCommStatus");
+    boxCommStatus.innerHTML = "Enviando a Solicitação..."
+    contract.receber()
+    .then( (rx) => {
+        console.log("Receber pagamento - transação", rx);
+        boxCommStatus.innerHTML = "Solicitação enviada, aguardando resultado...";
+        rx.wait()
+        .then( (resultFromContract) => {
+            console.log("Receber pagamento - desistencia Confirmada", resultFromContract);
+            boxCommStatus.innerHTML = "Pagamento recebido com sucesso.";
+        })
+        .catch( (err) => {
+            console.error("Receber pagamento - after rx being mint");
+            console.error(err);
+            boxCommStatus.innerHTML = "Algo saiu errado: " + err.message;
+        })
+    })    
+    .catch( (err) => {
+        console.error("Desistência - rx has been sent");
+        console.error(err);
+        boxCommStatus.innerHTML = "Algo deu errado: " + err.message;
+    })      
 }

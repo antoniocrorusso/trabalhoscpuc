@@ -37,7 +37,7 @@ contract Compra {
     event CompraConfirmada();
     event ObjetoEntregue();
 
-    function desistir()public apenasComprador noEstado(Estado.Confirmado) returns(bool) {
+    function desistir() public apenasComprador noEstado(Estado.Confirmado) returns(bool) {
         emit Desistencia();
         estado = Estado.Inativo;
         comprador.transfer(address(this).balance);

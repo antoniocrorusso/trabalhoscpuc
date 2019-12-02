@@ -6,20 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
+  
   <body>
-
     <div class="header">
-        <h1>Contrato de Compra em Blockchain</h1>
-        </br>
-        <div class="contractInfo">
-            <h2>Status do Contrato</h2>
-            <div>O contrato é: 0xEdd56a750E72B4547221eA01A243eb649Fc0b737 </div>
-            <div>O Estado do Contrato é: <span id="campoStatus">&nbsp;</span> - <button onclick=></button>Atualizar o Estado.</button></div>
-            <div>O valor do Contrato é: <span id="campoValor">&nbsp;</span></div>
-            <div>O valor atual no Smart Contract é: <span id="boxBalance">0</span> - <button onclick="valorNoContrato()">Atualizar o valor.</button></div>
-        </div>
+      <h1>Contrato de Compra em Blockchain</h1>
+      <div class="contractInfo">
+       <h2>Status do Contrato</h2>
+        <div>O contrato é: 0xEdd56a750E72B4547221eA01A243eb649Fc0b737 </div>
+        <div>O Estado do Contrato é: <span id="campoStatus">&nbsp;</span> - <button onclick=></button>Atualizar o Estado.</button></div>
+        <div>O valor do Contrato é: <span id="campoValor">&nbsp;</span></div>
+        <div>O valor atual no Smart Contract é: <span id="boxBalance">0</span> - <button onclick="valorNoContrato()">Atualizar o valor.</button></div>
+      </div>
     </div>
-
+    
     <div class="navbar">
       <button onclick="hideShowBuy()">Opções do Comprador</button>
       <button onclick="hideShowSel()">Opções do Vendedor</button>
@@ -27,56 +26,81 @@
     </div>
 
     <div class="row">
-        <div id="buyerOpt">
-            <h2>Opções do Comprador</h2>
-            <h5>Clique em cada botão para realizar a operação desejada</h5>
+      <div id="buyerOpt">
+        <h2 style="text-align: center;">Opções do Comprador</h2>
+        <div>
+          <h3>Confirmar a Compra</h3>
+          <form name="frmPayment" id="frmPayment" action="#" method="get" onsubmit="confirmarCompra(); return false;">
             <div>
-              <h5>Confirmar a Compra.</h5>
-              <form name="frmPayment" id="frmPayment" action="#" method="get" onsubmit="confirmarCompra(); return false;">
-                  <div>
-                    <label for="amount">Valor à pagar: </label>
-                      <input type="number" name="amount" id="value"> em Wei
-                  </div>
-                  <div>
-                      &nbsp;
-                  </div>
-                  <div>
-                      <button type="submit">Confirmar Pagamento</button>
-                  </div>
-                  <div>
-                      &nbsp;
-                  </div>
-              </form>
-
+              <label for="amount">Valor à pagar: </label><input type="number" name="amount" id="value"> em Wei<br>
             </div>
-            
-            <br>
-            <p>Confirmar o Recebimento</p>
-            <br>
-            <p>Desistir da Compra</p>
+            <div>
+              &nbsp;
+            </div>
+            <div id="divButton">
+              <button type="submit">Confirmar Pagamento</button>
+            </div>
+          </form>
         </div>
+        <div>
+          &nbsp;
+        </div>
+        <div>
+          <h3>Confirmar o Recebimento</h3>
+          <form name="frmDelivery" id="frmDelivery" action="#" method="get" onsubmit="confirmarEntrega(); return false;">
+            <div id="divButton">
+              <button type="submit">Confirmar Recebimento</button>
+            </div>
+          </form>
+        </div>
+        <div>
+          &nbsp;
+        </div>
+        <div>
+          <h3>Desistir da Compra</h3>
+          <form name="frmGiveup" id="frmGiveup" action="#" method="get" onsubmit=" desistir(); return false;">
+            <div id="divButton">
+              <button type="submit">Desistir</button>
+            </div>
+            <div>
+              &nbsp;
+            </div>
+            <div style="font-size: 12px;">
+              <p>Somente será possível desistir da Compra pelo site antes da entrega.</p><p>Nos demais casos, contate o vendedor.</p>
+            </div>
+          </form>
+        </div>
+      </div>
 
-        <div id="sellerOpt">
-            <h2>Opções do Vendedor</h2>
-            <h5>Clique em cada botão para realizar a operação desejada</h5>
-            <p>Receber os valores</p>
-        </div>
+      <div id="sellerOpt">
+          <h2 style="text-align: center;">Opções do Vendedor</h2>
+          <h3>Receber os Valores do Contrato</h3>
+          <form name="frmReceive" id="frmReceive" action="#" method="get" onsubmit="receber(); return false;">
+            <div id="divButton">
+              <button type="submit">Receber</button>
+            </div>
+          </form>
+          <div>
+            &nbsp;
+          </div>
+      </div>
 
-        <div id="refund">
-            <h2>Para trocas, devolução com base no arrependimento ou contato:</h2>
-            <h5>Empresa XPTO</h5>
-            <h5>Av. avenida, n° 00, bairro X - São Paulo/SP</h5>
-            <h5>Fone: (11) 5555-5555</h5>
-            <h5>Email: xpto@email.com</h5>
-            </br>
-            <p>*OBS: Não será possível o arrependimento após o período de 7 dias úteis.</p>
-        </div>
+      <div id="refund">
+          <h2 style="text-align: center;">Para trocas, devoluções com base no arrependimento ou contato:</h2>
+          <h4>Empresa XPTO</h4>
+          <h4>Av. avenida, n° 00, bairro X - São Paulo/SP</h4>
+          <h4>Fone: (11) 5555-5555</h4>
+          <h4>Email: xpto@email.com</h4>
+          </br>
+          <p style="font-size: 15px;">*OBS: Não será possível o arrependimento após o período de 7 dias úteis.</p>
+      </div>
     </div>
-
-    <div id="boxCommStatus">
-      Caixa de Diálogo da Blockchain
+    <div id="boxCommStatus" style="background: #1abc9c;;">
+        Caixa de Diálogo da Blockchain
     </div>
-
+    <div id="boxContact">
+        Criado por <a href="https://github.com/antoniocrorusso/trabalhoscpuc" style="text-decoration: none; color: black;">Antonio C. Rodrigo de Oliveira Russo</a>
+    </div>
     <script>
         function hideShowBuy() {
           var x = document.getElementById("buyerOpt");
