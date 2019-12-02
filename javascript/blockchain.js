@@ -125,3 +125,29 @@ function receber() {
         boxCommStatus.innerHTML = "Algo deu errado: " + err.message;
     })      
 }
+
+function valorContrato() {
+    var status;
+    var campoValor = document.getElementById("campoValor");     
+    contrato.valor()
+    .then( (result) => {
+        campoValor.innerHTML = result;
+    })
+    .catch( (err) => {
+        console.error(err);
+        campoValor.innerHTML = err;
+    });
+}
+
+function estadoContrato() {
+    var status;
+    var campoStatus = document.getElementById("campoStatus");     
+    contrato.estado()
+    .then( (result) => {
+        campoStatus.innerHTML = result;
+    })
+    .catch( (err) => {
+        console.error(err);
+        campoStatus.innerHTML = err;
+    });
+}
