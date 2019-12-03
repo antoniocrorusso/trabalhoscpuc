@@ -1,5 +1,6 @@
 var contractAddress = "0x2DD034a25a9926038966b1ec735175ba320B704B";
 var provider = new ethers.providers.Web3Provider(web3.currentProvider);
+ethereum.enable();
 var signer = provider.getSigner();
 var contract = new ethers.Contract(contractAddress, contractAbi, signer);
 
@@ -14,7 +15,6 @@ function valorNoContrato() {
     .catch( (err) => {
         console.error(err);
         alert("Uma tela irá aparecer pedindo para conectar com sua conta ethereum.\nPara proceder, dê essa permissão.\nCaso não tenha uma conta ethereum, crie uma usando o Metamask.");
-        ethereum.enable();
         alert("Depois de dar a permissão, iremos recarregar a página.");
         document.location = "index.html";
     });
